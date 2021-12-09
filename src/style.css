@@ -37,12 +37,25 @@ li:first-letter {
 
 .weather-app {
   padding: 20px;
-  border: 1px solid #dadde1;
-  border-radius: 5px;
+  border: 7px solid #beb8cb;
+  border-radius: 20px;
+}
+
+#city-input {
+  box-shadow: 10px 10px 20px rgba(148, 133, 133, 0.2);
+}
+
+.btn {
+  box-shadow: 10px 10px 20px rgba(148, 133, 133, 0.2);
 }
 
 .overview {
   margin-bottom: 20px;
+}
+
+#icon {
+  position: relative;
+  top: -28px;
 }
 
 .weather-temperature img {
@@ -64,11 +77,11 @@ li:first-letter {
   top: -34px;
 }
 
+.weather-temperature .active:hover {
+  text-decoration: none;
+}
 .weather-temperature .active {
   color: rgb(33, 33, 33);
   cursor: default;
-}
-
-.weather-temperature .active:hover {
   text-decoration: none;
 }
