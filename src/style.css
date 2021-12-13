@@ -77,9 +77,6 @@ li:first-letter {
   top: -34px;
 }
 
-.weather-temperature .active:hover {
-  text-decoration: none;
-}
 .weather-temperature {
   color: rgb(33, 33, 33);
   cursor: default;
