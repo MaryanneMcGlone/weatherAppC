@@ -80,7 +80,7 @@ li:first-letter {
 .weather-temperature .active:hover {
   text-decoration: none;
 }
-.weather-temperature .active {
+.weather-temperature {
   color: rgb(33, 33, 33);
   cursor: default;
   text-decoration: none;
