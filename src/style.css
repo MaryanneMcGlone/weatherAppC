@@ -77,9 +77,12 @@ li:first-letter {
   top: -34px;
 }
 
-.weather-temperature {
+.weather-temperature .active {
   color: rgb(33, 33, 33);
   cursor: default;
+}
+
+.weather-temperature .active:hover {
   text-decoration: none;
 }
 
@@ -98,6 +101,6 @@ li:first-letter {
   opacity: 0.5;
 }
 
-.weather-forecast-temperature {
+.weather-forecast-temperatures {
   font-size: 13px;
 }
