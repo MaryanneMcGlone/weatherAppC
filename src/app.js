@@ -50,7 +50,7 @@ function displayForecast(response) {
          alt=""
          width="42"
        />
-       <div class="weather-forecast-temperature">
+       <div class="weather-forecast-temperatures">
          <span class="weather-forecast-temperature-max"> ${Math.round(
            forecastDay.temp.max
          )}° </span>
