@@ -42,7 +42,9 @@ function displayForecast(response) {
         forecastHTML +
         `
      <div class="col-2">
-       <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+       <div class="weather-forecast-date">${formatDay(
+         new Date(forecastDay.dt * 1000)
+       )}</div>
        <img
          src="http://openweathermap.org/img/wn/${
            forecastDay.weather[0].icon
@@ -54,7 +56,7 @@ function displayForecast(response) {
          <span class="weather-forecast-temperature-max"> ${Math.round(
            forecastDay.temp.max
          )}° </span>
-         <span class="weather-forcast-temperature-min"> ${Math.round(
+         <span class="weather-forecast-temperature-min"> ${Math.round(
            forecastDay.temp.min
          )}° </span>
        </div>
@@ -83,8 +85,6 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  celsiusTemperature = response.data.main.temp;
-
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -95,15 +95,21 @@ function displayTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+  iconElement.setAttribute("alt", response.data.weather[0].icon);
 
+  celsiusTemperature = response.data.main.temp;
   getForecast(response.data.coord);
 }
 
 function search(city) {
   let apiKey = "c331439fb9ce2dda219db0c33143aaec";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayTemperature);
+  axios
+    .get(apiUrl)
+    .then(displayTemperature)
+    .catch(function (err) {
+      `Unable to fetch weather information for ${city}`;
+    });
 }
 
 function handleSubmit(event) {
@@ -114,5 +120,7 @@ function handleSubmit(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let celsiusTemperature = null;
 
 search("New York");
